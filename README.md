@@ -13,3 +13,9 @@ Berdasarkan hasil eksekusi diatas, dilakukan pengiriman pesan dari 3 client yang
 ![Changed port](image-1.png)
 
 Setelah dilakukan penggantian terhadap port di kedua file menjadi 8080, di mana pada `client.rs` penggantian port ada pada Uri `ClientBuilder` yang merupakan builder koneksi WebSocket pada client dan pada `server.rs` penggantian port ada pada `listener` yang berfungsi sebagaii TCP listener koneksi, lalu pada perintah print untuk menunjukkan bahwa port sudah berubah. Setelah dilakukan perubahan ini, program masih berjalan dengan normal.
+
+## 2.3. Small changes. Add some information to client
+
+![Add Hostname](image-2.png)
+
+Untuk menambahkan informasi IP dan port dari sender di tiap clientnya, format teks broadcast di `server.rs` diubah dengan menambahkan address dari client yang mengirim. Dari yang awalnya `bcast_tx.send(text.into())?;` diubah jadi `bcast_tx.send(format!("{addr} : {text}"))?;`. Selain itu saya juga menambahkan keterangan seperti "From Syauqi's Computer" untuk memperjelasnya.
